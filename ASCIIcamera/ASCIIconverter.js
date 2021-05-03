@@ -1,5 +1,4 @@
 let parametre = {
-  offset: 50,
   pixelSize: 10,
   color: [0, 0, 0],
   background: [255, 255, 255],
@@ -181,7 +180,7 @@ function draw() {
             if (color) {
               fill(r, g, b);
             }
-            text(letter, (capture.width - 1) - x, y + parametre.offset);
+            text(letter, (capture.width - 1) - x, y);
           }
         }
         if (retro) retroformat += line + '<br>';

@@ -4,7 +4,7 @@ body {
   padding: 0;
 }
 
- .button {
+ button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -13,4 +13,8 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+pre {
+  letter-spacing:1px;
 }

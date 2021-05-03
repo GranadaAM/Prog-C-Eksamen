@@ -1,9 +1,9 @@
 let parametre = {
   offset: 50,
   pixelSize: 10,
-  colour: [0, 0, 0],
+  color: [0, 0, 0],
   background: [255, 255, 255],
-  characters: ' .:-=+*#%@',
+  characters: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^` ',
   retrocharacters: ['&nbsp;', '&#9617;', '&#9618;', '&#9619;', '&#9608;'],
   textSize: 13
 };
@@ -23,7 +23,7 @@ let cvs;
 function setup() {
   colorbtn = createButton('COLOR');
   colorbtn.size(buttonSize[0], buttonSize[1]);
-  colorbtn.mousePressed(function(){color=true});
+  colorbtn.mousePressed(function(){color=!color});
   btn1 = createButton('NORMAL');
   btn1.size(buttonSize[0], buttonSize[1]);
   btn1.mousePressed(function () { normal = true; italic = false; bold = false; retro = false });
@@ -68,6 +68,7 @@ function draw() {
   parametre.textSize = textSizeSlider.value();
   parametre.pixelSize = pixelSizeSlider.value();
   textSize(parametre.textSize);
+  fill(parametre.color);
 
   if (normal) textStyle(NORMAL); else
   if (italic) textStyle(ITALIC); else

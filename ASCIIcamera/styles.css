@@ -8,12 +8,13 @@ body {
   background-color: rgb(224, 71, 71);
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 22px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 pre {

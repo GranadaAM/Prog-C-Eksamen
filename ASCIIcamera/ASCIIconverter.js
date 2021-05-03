@@ -16,7 +16,7 @@ let normal = false;
 let italic = false;
 let bold = false;
 let retro = false;
-let buttonSize = [140, 35];
+let buttonSize = [150, 35];
 let color = false;
 let cvs;
 

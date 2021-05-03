@@ -12,7 +12,7 @@ let capture;
 let capturing = false;
 let canvasWidth;
 let canvasHeight;
-let normal = true;
+let normal = false;
 let italic = false;
 let bold = false;
 let retro = false;
@@ -22,30 +22,94 @@ let cvs;
 
 function setup() {
   colorbtn = createButton('COLOR: OFF');
-  console.log(colorbtn);
   colorbtn.size(buttonSize[0], buttonSize[1]);
   colorbtn.mousePressed(function () {
-     color = !color;
-     colorbtn.toggleClass('btncolor');
-     if (color){
-        colorbtn.html('COLOR: ON');
-      }
-     else {
-       colorbtn.html('COLOR: OFF')
-     }
-   });
+    if (!retro) {
+      color = !color;
+      colorbtn.toggleClass('btncolor');
+    }
+    if (color) {
+      colorbtn.html('COLOR: ON');
+    }
+    else {
+      colorbtn.html('COLOR: OFF')
+    }
+  });
+
   btn1 = createButton('NORMAL');
   btn1.size(buttonSize[0], buttonSize[1]);
-  btn1.mousePressed(function () { normal = true; italic = false; bold = false; retro = false });
+  btn1.mousePressed(function () {
+    if (!normal){
+      btn1.toggleClass('btncolor');
+      normal = true;
+    }
+    
+    if (italic) {
+      btn2.toggleClass('btncolor');
+      italic = false
+    }
+    else if (bold) {
+      btn3.toggleClass('btncolor');
+      bold = false
+    }
+    toggleRetro();
+  });
+
   btn2 = createButton('ITALIC');
   btn2.size(buttonSize[0], buttonSize[1]);
-  btn2.mousePressed(function () { italic = true; normal = false; bold = false; retro = false });
+  btn2.mousePressed(function () {
+    if (!italic){
+      btn2.toggleClass('btncolor');
+      italic = true;
+    }
+    toggleRetro();
+    if (normal) {
+      btn1.toggleClass('btncolor');
+      normal = false
+    }
+    else if (bold) {
+      btn3.toggleClass('btncolor');
+      bold = false
+    }
+  });
+
   btn3 = createButton('BOLD');
   btn3.size(buttonSize[0], buttonSize[1]);
-  btn3.mousePressed(function () { bold = true; italic = false; normal = false; retro = false });
-  btn4 = createButton('RETRO');
+  btn3.mousePressed(function () {
+    if (!bold){
+      btn3.toggleClass('btncolor');
+      bold = true;
+    }
+    toggleRetro();
+    if (normal) {
+      btn1.toggleClass('btncolor');
+      normal = false
+    }
+    else if (italic) {
+      btn2.toggleClass('btncolor');
+      italic = false
+    }
+  });
+
+  btn4 = createButton('RETRO: OFF');
   btn4.size(buttonSize[0], buttonSize[1]);
-  btn4.mousePressed(function () { retro = true; italic = false; bold = false; normal = false });
+  btn4.mousePressed(function () {
+    retro = !retro;
+    toggleNIB();
+    btn4.toggleClass('btncolor');
+    if (retro) {
+      btn4.html('RETRO: ON');
+    }
+    else {
+      btn4.html('RETRO: OFF')
+    }
+    if (retro && color) {
+      //color = !color;
+      colorbtn.html('COLOR: OFF');
+      colorbtn.toggleClass('btncolor');
+    }
+  });
+
   textSizeSlider = createSlider(1, 50);
   pixelSizeSlider = createSlider(2, 20);
 
@@ -123,5 +187,28 @@ function draw() {
       if (retro) retroformat += '</pre>';
       paragraph.html(retroformat);
     }
+  }
+}
+
+function toggleRetro() {
+  if (retro) {
+    btn4.html('RETRO: OFF');
+    btn4.toggleClass('btncolor');
+    retro = false;
+  }
+}
+
+function toggleNIB() {
+  if (normal) {
+    normal = false;
+    btn1.toggleClass('btncolor')
+  }
+  else if (italic) {
+    italic = false;
+    btn2.toggleClass('btncolor')
+  }
+  else if (bold) {
+    bold = false;
+    btn3.toggleClass('btncolor')
   }
 }

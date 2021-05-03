@@ -16,14 +16,24 @@ let normal = true;
 let italic = false;
 let bold = false;
 let retro = false;
-let buttonSize = [140, 50];
+let buttonSize = [170, 50];
 let color = false;
 let cvs;
 
 function setup() {
-  colorbtn = createButton('COLOR');
+  colorbtn = createButton('COLOR: OFF');
+  console.log(colorbtn);
   colorbtn.size(buttonSize[0], buttonSize[1]);
-  colorbtn.mousePressed(function(){color=!color});
+  colorbtn.mousePressed(function () {
+     color = !color;
+     colorbtn.toggleClass('btncolor');
+     if (color){
+        colorbtn.html('COLOR: ON');
+      }
+     else {
+       colorbtn.html('COLOR: OFF')
+     }
+   });
   btn1 = createButton('NORMAL');
   btn1.size(buttonSize[0], buttonSize[1]);
   btn1.mousePressed(function () { normal = true; italic = false; bold = false; retro = false });
@@ -53,7 +63,7 @@ function setup() {
   capture = createCapture(constraints, function () {
     capturing = true;
   });
-  
+
   capture.size(1920, 930);
   canvasSize = capture.size();
   console.log(canvasSize);
@@ -71,8 +81,8 @@ function draw() {
   fill(parametre.color);
 
   if (normal) textStyle(NORMAL); else
-  if (italic) textStyle(ITALIC); else
-    textStyle(BOLD);
+    if (italic) textStyle(ITALIC); else
+      textStyle(BOLD);
 
   const characters = parametre.characters.split('');
   const retrocharacters = parametre.retrocharacters;
@@ -102,7 +112,7 @@ function draw() {
             cvs.show();
             let getCharIndex = Math.round(map(bright, 0, 255, characters.length - 1, 0))
             const letter = characters[getCharIndex];
-            if (color){
+            if (color) {
               fill(r, g, b);
             }
             text(letter, (capture.width - 1) - x, y + parametre.offset);

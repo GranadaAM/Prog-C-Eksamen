@@ -5,7 +5,7 @@ let parametre = {
     background: [255, 255, 255],
     characters: ' .:-=+*#%@',
     retrocharacters: ['&nbsp;', '&#9617;', '&#9618;', '&#9619;', '&#9608;'],
-    textSize: 13,
+    textSize: 13
     };
   
   let capture;
@@ -17,11 +17,12 @@ let parametre = {
   let bold = false;
   let retro= false;
   let buttonSize = [140, 50];
-  
+  let cvs;
+
 function setup() {
     canvasWidth = windowWidth;
     canvasHeight = windowHeight;
-    createCanvas(canvasWidth, canvasHeight);
+    cvs = createCanvas(canvasWidth, canvasHeight);
     paragraph = createP('');
 
     btn1 = createButton('NORMAL');
@@ -36,8 +37,9 @@ function setup() {
     btn4 = createButton('RETRO');
     btn4.size(buttonSize[0], buttonSize[1]);
     btn4.mousePressed(function(){retro=true; italic = false; bold = false; normal = false})
+    slider1 = createSlider('Text Size');
   
-    var constraints = {
+    let constraints = {
       video: {
         mandatory: {
           minWidth: 1280,
@@ -47,7 +49,6 @@ function setup() {
   
     capture = createCapture(constraints, function() {
       capturing = true;
-      console.log('capturing');
     });
   
     capture.size(canvasWidth, canvasHeight);
@@ -84,11 +85,13 @@ function draw() {
       
                 const bright = Math.round((r + g + b) / 3);
             if (retro){
+                cvs.hide();
                 let getCharIndex = Math.round(map(bright, 0, 255, retrocharacters.length - 1, 0))
                 const letter = retrocharacters[getCharIndex];
                 line += letter;
             }
             else{
+                cvs.show();
                 let getCharIndex = Math.round(map(bright, 0, 255, characters.length - 1, 0))
                 const letter = characters[getCharIndex];
                 text(letter, x, y+parametre.offset);

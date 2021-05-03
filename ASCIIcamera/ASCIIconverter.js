@@ -26,7 +26,7 @@ function setup() {
   colorbtn.mousePressed(function () {
     if (!retro) {
       color = !color;
-      colorbtn.toggleClass('btncolor');
+      colorbtn.toggleClass('btncolor')
     }
     if (color) {
       colorbtn.html('COLOR: ON');
@@ -104,14 +104,16 @@ function setup() {
       btn4.html('RETRO: OFF')
     }
     if (retro && color) {
-      //color = !color;
+      color = !color;
       colorbtn.html('COLOR: OFF');
       colorbtn.toggleClass('btncolor');
     }
   });
 
   textSizeSlider = createSlider(1, 50);
+  textSizeSlider.addClass('textSlider');
   pixelSizeSlider = createSlider(2, 20);
+  pixelSizeSlider.addClass('pixelSlider');
 
   let constraints = {
     video: {

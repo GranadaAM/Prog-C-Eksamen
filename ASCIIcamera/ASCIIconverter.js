@@ -3,7 +3,7 @@ let parametre = {
   pixelSize: 10,
   color: [0, 0, 0],
   background: [255, 255, 255],
-  characters: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^` ',
+  characters: ' .:-=+*#%@',
   retrocharacters: ['&nbsp;', '&#9617;', '&#9618;', '&#9619;', '&#9608;'],
   textSize: 13
 };

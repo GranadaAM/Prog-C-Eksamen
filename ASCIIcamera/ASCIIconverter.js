@@ -42,7 +42,7 @@ function setup() {
       btn1.toggleClass('btncolor');
       normal = true;
     }
-
+    toggleRetro();
     if (italic) {
       btn2.toggleClass('btncolor');
       italic = false
@@ -51,7 +51,6 @@ function setup() {
       btn3.toggleClass('btncolor');
       bold = false
     }
-    toggleRetro();
   });
 
   btn2 = createButton('ITALIC');

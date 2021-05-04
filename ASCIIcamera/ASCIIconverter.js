@@ -38,11 +38,11 @@ function setup() {
   btn1 = createButton('NORMAL');
   btn1.size(buttonSize[0], buttonSize[1]);
   btn1.mousePressed(function () {
-    if (!normal){
+    if (!normal) {
       btn1.toggleClass('btncolor');
       normal = true;
     }
-    
+
     if (italic) {
       btn2.toggleClass('btncolor');
       italic = false
@@ -57,7 +57,7 @@ function setup() {
   btn2 = createButton('ITALIC');
   btn2.size(buttonSize[0], buttonSize[1]);
   btn2.mousePressed(function () {
-    if (!italic){
+    if (!italic) {
       btn2.toggleClass('btncolor');
       italic = true;
     }
@@ -75,7 +75,7 @@ function setup() {
   btn3 = createButton('BOLD');
   btn3.size(buttonSize[0], buttonSize[1]);
   btn3.mousePressed(function () {
-    if (!bold){
+    if (!bold) {
       btn3.toggleClass('btncolor');
       bold = true;
     }
@@ -121,8 +121,7 @@ function setup() {
         minHeight: 720
       },
       optional: [{ maxFrameRate: 10 }]
-    },
-    audio: false
+    }
   };
 
   capture = createCapture(constraints, function () {

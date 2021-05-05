@@ -18,6 +18,9 @@ let retro = false;
 let buttonSize = [150, 35];
 let color = false;
 let cvs;
+let paragraph;
+let characters = parametre.characters.split('');
+let retrocharacters = parametre.retrocharacters;
 
 function setup() {
   colorbtn = createButton('COLOR: OFF');
@@ -147,8 +150,6 @@ function draw() {
     if (italic) textStyle(ITALIC); else
       textStyle(BOLD);
 
-  const characters = parametre.characters.split('');
-  const retrocharacters = parametre.retrocharacters;
   let retroformat = '<pre>';
 
   if (capturing) {
@@ -158,23 +159,23 @@ function draw() {
       for (y = 0; y < capture.height; y += parametre.pixelSize) {
         let line = '';
         for (x = capture.width - 1; x > 0; x -= parametre.pixelSize) {
-          const index = (x + y * capture.width) * 4;// *4 is for each rgba value
-          const r = capture.pixels[index];
-          const g = capture.pixels[index + 1];
-          const b = capture.pixels[index + 2];
+          let index = (x + y * capture.width) * 4;// *4 is for each rgba value
+          let r = capture.pixels[index];
+          let g = capture.pixels[index + 1];
+          let b = capture.pixels[index + 2];
           //const a = capture.pixels[index + 3];
 
-          const bright = Math.round((r + g + b) / 3);
+          let bright = Math.round((r + g + b) / 3);
           if (retro) {
             cvs.hide();
             let getCharIndex = Math.round(map(bright, 0, 255, retrocharacters.length - 1, 0))
-            const letter = retrocharacters[getCharIndex];
+            let letter = retrocharacters[getCharIndex];
             line += letter;
           }
           else {
             cvs.show();
             let getCharIndex = Math.round(map(bright, 0, 255, characters.length - 1, 0))
-            const letter = characters[getCharIndex];
+            let letter = characters[getCharIndex];
             if (color) {
               fill(r, g, b);
             }

@@ -130,7 +130,7 @@ function setup() {
     capturing = true;
   });
 
-  capture.size(1920, 930);
+  capture.size(1920, 1000);
   canvasSize = capture.size();
   console.log(canvasSize);
   cvs = createCanvas(canvasSize.width, canvasSize.height);
